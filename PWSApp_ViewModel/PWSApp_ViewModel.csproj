@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9D46C82B-3470-4215-A7EA-13C4BD61D8EB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PWSApp_ViewModel</RootNamespace>
+    <AssemblyName>PWSApp_ViewModel</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Modality_ViewModel.cs" />
+    <Compile Include="PACS_ViewModelcs.cs" />
+    <Compile Include="RIS_ViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PWSApp_AllergyModel\PWSApp_AllergyModel.csproj">
+      <Project>{78cccb2b-69ef-436f-82c0-1c3f1fd86762}</Project>
+      <Name>PWSApp_AllergyModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PWSApp_ModalityModel\PWSApp_ModalityModel.csproj">
+      <Project>{a5966fd3-bcc5-4623-8eec-308ef6b57539}</Project>
+      <Name>PWSApp_ModalityModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PWSApp_OrderModell\PWSApp_OrderModell.csproj">
+      <Project>{cc5d5fb1-7bcc-4460-90cc-3a70f3bf392c}</Project>
+      <Name>PWSApp_OrderModell</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PWSApp_PatientModel\PWSApp_PatientModel.csproj">
+      <Project>{5ffa18a2-b74b-45e3-ab46-175db35a85f6}</Project>
+      <Name>PWSApp_PatientModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PWSApp_RecordModel\PWSApp_RecordModel.csproj">
+      <Project>{bf28dce7-2ac6-4b91-bcc8-e0f454979f5d}</Project>
+      <Name>PWSApp_RecordModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PWS_BusinessLayer\PWS_BusinessLayer.csproj">
+      <Project>{c1de21e0-e620-47b5-b3a2-1a9f7b94745d}</Project>
+      <Name>PWS_BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RIS_InputValidation\RIS_InputValidation.csproj">
+      <Project>{a46bb264-0356-4929-845f-ecc762710095}</Project>
+      <Name>RIS_InputValidation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,213 @@
+﻿<Window x:Class="PWSApp_WPFUI.Modality_FirstWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PWSApp_WPFUI"
+        xmlns:vm="clr-namespace:PWSApp_ViewModel;assembly=PWSApp_ViewModel"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="Ultrasound" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:Modality_ViewModel>
+        </vm:Modality_ViewModel>
+    </Window.DataContext>
+
+
+
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="3" Margin="5,5,5,5" Background="#808B96">
+
+            <Image Source="/Images/Philips_footer.jpg"  DockPanel.Dock="Bottom" HorizontalAlignment="Left" VerticalAlignment="Bottom" ></Image>
+
+        </Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="20*"/>
+
+            </Grid.RowDefinitions>
+            <Button Content="Start Exam" Grid.Column="1" Background="white" FontFamily="Times New Roman"
+              FontSize="15"
+              HorizontalAlignment="Right" Height="29" Margin="0,4.33,25.33,0" Grid.Row="2" VerticalAlignment="Top" Width="132" Click="Button_Click_2"/>
+
+            <Button Name="FetchButton" Content="Fetch" Background="white" FontFamily="Times New Roman"
+              FontSize="15"
+              HorizontalAlignment="Left" Height="29" Margin="12,4.33,0,0" Grid.Row="2" VerticalAlignment="Top" Width="132" Click="Button_Click"/>
+
+
+            <Border BorderBrush="Black" BorderThickness="1" Margin="12,12,3,3" Background=" #D3D3D3 " Grid.Row="0" Grid.Column="0">
+
+
+
+            </Border>
+            <Border BorderBrush="Black" BorderThickness="1" Margin="3,12,12,3" Background=" #D3D3D3 " Grid.Row="0" Grid.Column="1">
+
+
+
+            </Border>
+            <Border BorderBrush="Black" BorderThickness="1" Margin="12,3,12,3" Background=" #D3D3D3 " Grid.Row="1" Grid.ColumnSpan="2"></Border>
+
+
+
+            <Grid Name="fetchGrid" Grid.Row="0" Margin="12,15,9.8,50" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+
+
+                <TextBlock Margin="14,7,0,7" Grid.Row="0" Grid.Column="0">Patient Name</TextBlock>
+                <TextBox IsEnabled="False" Name="PatientNameTextBox" Margin="5,5,5,7" Grid.Column="1" Text="" ></TextBox>
+
+
+
+                <TextBlock Margin="14,7,0,7" Grid.Row="1">MRN</TextBlock>
+                <TextBox Name="MRNTextBox" Margin="5,5,5,7" Grid.Row="1" IsEnabled="False" Grid.Column="1" Text=""/>
+
+                <TextBlock Margin="14,10,3,28" Grid.Row="2">Gender</TextBlock>
+                <TextBox Name="GenderTextBox" Margin="5,5,5,34" Grid.Row="2" IsEnabled="False" Grid.Column="1" />
+
+                <TextBlock Margin="14,37,4,0" Grid.Row="2" Height="17" VerticalAlignment="Top">Age</TextBlock>
+                <TextBox Name="PatientAgeTextBox" Margin="5,33,5,4" Grid.Row="2" IsEnabled="False" Grid.Column="1" Text=""/>
+
+                <TextBlock Margin="14,0,1,9" Grid.Row="6" Text="Exam Type"/>
+                <TextBox Name="ExamTypeTextBox" Margin="5,0,5,3" Grid.Row="6" IsEnabled="False" Grid.Column="1" />
+
+                <TextBlock Margin="14,36,1,-29" Grid.Row="6" Text="Referring Physician Name" RenderTransformOrigin="0.563,0.476"/>
+                <TextBox Name="ReferringPhysicianNameTextBox" IsEnabled="False" Margin="5,28,5,-23" Grid.Row="6" Grid.Column="1" Text=""/>
+
+                <TextBlock Margin="14,59,0,-52" Grid.Row="6" Text="System ID" RenderTransformOrigin="0.563,0.476"/>
+                <TextBox Name="SystemID" Margin="5,54,5,-52" Grid.Row="6" IsEnabled="False" Grid.Column="1" Text="US101"/>
+
+            </Grid>
+
+            <Grid Name="allergyGrid" Grid.Row="0" Grid.Column="1" Margin="3,15,12,3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Margin="20,8,-102,7" Grid.Row="0" Grid.Column="0">Allergies</TextBlock>
+
+                <TextBox Name="AllergyTextBox" Margin="120,6,12,39" Grid.Column="1" Text="{Binding Allergies}"/>
+
+                <TextBlock TextAlignment="Left" FontSize="11" Margin="120,40,12,7" Grid.Row="0" Grid.Column="1">Enter allergies separated by comma</TextBlock>
+
+                <TextBlock Margin="20,9,76,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">Diabetes</TextBlock>
+                <RadioButton x:Name = "No" Margin = "170,11,166,10" GroupName="Diabetes" Content = "No" Grid.Column="1" Grid.Row="1" />
+                <RadioButton x:Name = "Yes" Margin = "126,11,219,10" GroupName = "Diabetes" Content = "Yes" Grid.Column="1" Grid.Row="1" Checked="No_Checked" />
+
+                <ComboBox IsEnabled="False" Name="DiabetesType" Margin="220,9,12,10" Grid.Column="1" Grid.Row="1" Width="auto" Text="{Binding DiabetesType}" >
+                    <ComboBoxItem IsSelected="True">Type 1</ComboBoxItem>
+                    <ComboBoxItem>Type 2</ComboBoxItem>
+                    <ComboBoxItem>Gestational</ComboBoxItem>
+                </ComboBox>
+
+                <TextBlock Margin="20,0,239,17" Grid.Row="2" Grid.Column="1"><Run Text="Description"/></TextBlock>
+                <TextBox Name="AllergyDescTextBox" Margin="120,0,12,-48" Grid.Row="2" Grid.Column="1" Text="{Binding Description}" Grid.RowSpan="2"/>
+
+
+            </Grid>
+
+            <Grid Name="fetchTableGrid" Grid.Row="1" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="8*" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="7*" />
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="Auto" />
+                    <!-- <ColumnDefinition Width="" /> -->
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Border BorderBrush="Black" BorderThickness="1" Margin="12,1,12,1" Background=" #87888A " Grid.Row="0" Grid.ColumnSpan="10"></Border>
+                <TextBlock TextAlignment="Center" Margin="20,5,5,5" Grid.Row="0" Text="Select" Grid.Column="0"/>
+                <TextBlock TextAlignment="Center" Margin="20,5,5,5" Grid.Row="0" Text="MRN" Grid.Column="1"/>
+                <TextBlock TextAlignment="Center" Margin="10,5,15,5" Grid.Row="0" Text="First Name" Grid.Column="2"/>
+                <TextBlock TextAlignment="Center" Margin="0,5" Grid.Row="0" Text="Middle Name" Grid.Column="3"/>
+                <TextBlock TextAlignment="Center" Margin="5" Grid.Row="0" Text="Last Name" Grid.Column="4"/>
+                <TextBlock TextAlignment="Center" Margin="10,5,5,5" Grid.Row="0" Text="Gender" Grid.Column="5"/>
+                <TextBlock TextAlignment="Center" Margin="20,5,5,5" Grid.Row="0" Text="Age" Grid.Column="6"/>
+                <TextBlock TextAlignment="Center" Margin="10,5,5,5" Grid.Row="0" Text="Exam Type" Grid.Column="7"/>
+                <TextBlock TextAlignment="Center" Margin="0,5,5,5" Grid.Row="0" Text="Date of Exam" Grid.Column="8"/>
+                <TextBlock TextAlignment="Center" Margin="0,5,5,5" Grid.Row="0" Text="Referring Physician" Grid.Column="9"/>
+
+                <Border BorderBrush="Black" BorderThickness="1" Margin="12,1,12,1" Background="#D3D3D3" Grid.Row="1" Grid.ColumnSpan="10"></Border>
+
+                <RadioButton IsEnabled="False" x:Name = "FetchRadioButton1" Margin = "25,10,18,1" Grid.Row="1" Grid.Column="0" RenderTransformOrigin="1.529,1.294" Checked="select_Checked" />
+                <TextBlock TextAlignment="Center" Name="MRN_1" Margin="20,5,5,5" Grid.Row="1" Grid.Column="1" Text="" />
+                <TextBlock TextAlignment="Center" Name="PatientMiddleName_1" Margin="10,5,15,5" Grid.Row="1"  Grid.Column="3"/>
+                <TextBlock TextAlignment="Center" Name="PatientFirstName_1" Margin="10,6,15,4" Grid.Row="1" Grid.Column="2"/>
+                <TextBlock TextAlignment="Center" Name="PatientLastName_1" Margin="10,6,15,4" Grid.Row="1" Grid.Column="4"/>
+                <TextBlock TextAlignment="Center" Name="PatientGender_1" Margin="10,5,15,5" Grid.Row="1" Grid.Column="5"/>
+                <TextBlock TextAlignment="Center" Name="PatientAge_1" Margin="20,5,5,5" Grid.Row="1"  Grid.Column="6"/>
+                <TextBlock TextAlignment="Center" Name="ExamType_1" Margin="10,6,15,4" Grid.Row="1" Grid.Column="7"/>
+                <TextBlock TextAlignment="Center" Name="DateOfExam_1" Margin="10,6,15,4" Grid.Row="1" Grid.Column="8"/>
+                <TextBlock TextAlignment="Center" Name="ReferringPhysicianName_1" Margin="0,6,15,4" Grid.Row="1"  Grid.Column="9"/>
+
+                <Border BorderBrush="Black" BorderThickness="1" Margin="12,0,12,0" Background="#D3D3D3" Grid.Row="2" Grid.ColumnSpan="10"></Border>
+
+                <RadioButton IsEnabled="False" x:Name = "FetchRadioButton2" Margin = "25,6,18,5" Grid.Row="2" Grid.Column="0" RenderTransformOrigin="1.529,1.294" Checked="FetchRadioButton2_Checked" />
+                <TextBlock TextAlignment="Center" Name="MRN_2" Margin="20,5,5,5" Grid.Row="2" Grid.Column="1" Text="" />
+                <TextBlock TextAlignment="Center" Name="PatientMiddleName_2" Margin="10,5,15,5" Grid.Row="2" Grid.Column="3"/>
+                <TextBlock TextAlignment="Center" Name="PatientFirstName_2" Margin="10,6,15,4" Grid.Row="2" Grid.Column="2"/>
+                <TextBlock TextAlignment="Center" Name="PatientLastName_2" Margin="10,6,15,4" Grid.Row="2" Grid.Column="4"/>
+                <TextBlock TextAlignment="Center" Name="PatientGender_2" Margin="10,5,15,5" Grid.Row="2" Grid.Column="5"/>
+                <TextBlock TextAlignment="Center" Name="PatientAge_2" Margin="20,5,5,5" Grid.Row="2"  Grid.Column="6"/>
+                <TextBlock TextAlignment="Center" Name="ExamType_2" Margin="10,6,15,4" Grid.Row="2" Grid.Column="7"/>
+                <TextBlock TextAlignment="Center" Name="DateOfExam_2" Margin="10,6,15,4" Grid.Row="2" Grid.Column="8"/>
+                <TextBlock TextAlignment="Center" Name="ReferringPhysicianName_2" Margin="0,6,15,4" Grid.Row="2"  Grid.Column="9"/>
+
+                <Border BorderBrush="Black" BorderThickness="1" Margin="12,0,12,0" Background="#D3D3D3" Grid.Row="3" Grid.ColumnSpan="10"></Border>
+
+                <RadioButton IsEnabled="False" x:Name = "FetchRadioButton3" Margin = "25,0,18,5" Grid.Row="3" Grid.Column="0" RenderTransformOrigin="1.529,1.294" Height="15" VerticalAlignment="Bottom" Checked="FetchRadioButton3_Checked" />
+
+                <TextBlock TextAlignment="Center" Name="MRN_3" Margin="20,5,5,5" Grid.Row="3" Grid.Column="1" Text="" />
+                <TextBlock TextAlignment="Center" Name="PatientMiddleName_3" Margin="10,5,15,5" Grid.Row="3" Grid.Column="3"/>
+                <TextBlock TextAlignment="Center" Name="PatientFirstName_3" Margin="10,6,15,4" Grid.Row="3" Grid.Column="2"/>
+                <TextBlock TextAlignment="Center" Name="PatientLastName_3" Margin="10,6,15,4" Grid.Row="3" Grid.Column="4"/>
+                <TextBlock TextAlignment="Center" Name="PatientGender_3" Margin="10,5,15,5" Grid.Row="3" Grid.Column="5"/>
+                <TextBlock TextAlignment="Center" Name="PatientAge_3" Margin="20,5,5,5" Grid.Row="3"  Grid.Column="6"/>
+                <TextBlock TextAlignment="Center" Name="ExamType_3" Margin="10,6,15,4" Grid.Row="3" Grid.Column="7"/>
+                <TextBlock TextAlignment="Center" Name="DateOfExam_3" Margin="10,6,15,4" Grid.Row="3" Grid.Column="8"/>
+                <TextBlock TextAlignment="Center" Name="ReferringPhysicianName_3" Margin="0,6,15,4" Grid.Row="3"  Grid.Column="9"/>
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>
